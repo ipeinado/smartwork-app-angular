@@ -31,10 +31,13 @@
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "angular-i18next": "^9.0.1",
     "bootstrap": "^4.4.0",
     "i18next": "^19.4.4",
+    "i18next-browser-languagedetector": "^4.2.0",
     "i18next-electron-language-detector": "0.0.10",
     "i18next-fs-backend": "^1.0.3",
+    "i18next-xhr-backend": "^3.2.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
