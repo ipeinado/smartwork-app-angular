@@ -1,7 +1,10 @@
 const { app, BrowserWindow, screen } = require('electron');
-
 const path = require('path');
 const url = require('url');
+
+// const menuFactoryService = require('./services/menuFactory');
+const i18n = require('./electron_src/config/i18next.config');
+const menuFactoryService = require('./electron_src/services/menuFactory');
 
 let mainWindow;
 
@@ -28,11 +31,20 @@ function createWindow() {
     mainWindow.loadURL('http://localhost:4200');
   } else {
     mainWindow.loadURL(url.format({
-      pathname: path.join(__dirname, 'dist/smartwork-app-angular/index.html'),
+      pathname: path.join(__dirname, 'dist/index.html'),
       protocol: 'file:',
       slashes: true
     }));
   }
+
+  i18n.on('loaded', () => {
+    i18n.changeLanguage();
+    i18n.off('loaded');
+  });
+
+  i18n.on('languageChanged', (lang) => {
+    menuFactoryService.buildMenu(app, mainWindow, i18n);
+  });
 
   mainWindow.on('closed', () => {
     mainWindow = null;
